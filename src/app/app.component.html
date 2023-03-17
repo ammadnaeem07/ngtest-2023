@@ -1,0 +1,81 @@
+<!-- As a heading -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Navbar</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<br>
+<div class="container">
+  <div class="card col-md-6">
+    <div class="card-body">
+      <h4 class="card-title">Login</h4>
+      <div>
+        <form [formGroup]="f" novalidate>
+          <div class="form-group"
+            [class.has-danger]="((f.get('name')?.hasError('required') || f.get('name')?.hasError('email')) && f.get('name')?.hasError('email') )&& f.get('name')?.touched">
+            <input formControlName="name" type="email" class="form-control" id="exampleInputEmail1"
+              [class.form-control-danger]="f.get('name')?.hasError('required') && f.get('name')?.touched"
+              placeholder="Enter email">
+            <div *ngIf="f.get('name')?.hasError('required') && f.get('name')?.touched" class="form-control-feedback">
+              Sorry, that username's taken. Try another?</div>
+            <div
+              *ngIf="f.get('name')?.hasError('email') && f.get('name')?.touched && !f.get('name')?.hasError('required')"
+              class="form-control-feedback">That's not an email address</div>
+          </div>
+          <div class="form-group"
+            [class.has-danger]="(f.get('password')?.hasError('required') || f.get('password')?.hasError('minlength')) && f.get('password')?.touched">
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1"
+              [class.form-control-danger]="f.get('password')?.hasError('required') && f.get('password')?.touched"
+              placeholder="Password">
+
+            <div *ngIf="f.get('password')?.hasError('required') && f.get('password')?.touched"
+              class="form-control-feedback">Password required</div>
+
+            <div *ngIf="f.get('password')?.hasError('minlength') && f.get('password')?.touched"
+              class="form-control-feedback">Minimum length is 6 characters. Add more!</div>
+
+
+          </div>
+
+          <div class="mb-3">
+            <label for="validationTextarea" class="form-label">Textarea</label>
+            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+            <div class="invalid-feedback">
+              Please enter a message in the textarea.
+            </div>
+          </div>
+
+
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+
+          <button type="submit" (click)="onReset()" class="btn">Clear </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
