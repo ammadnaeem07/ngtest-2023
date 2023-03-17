@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
