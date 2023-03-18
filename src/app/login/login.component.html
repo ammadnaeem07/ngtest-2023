@@ -1,0 +1,39 @@
+
+<div class="container-fluid d-flex justify-content-center align-items-center"
+    style="height:80vh; overflow:hidden">
+
+    <!-- Inner row, half the width and height, centered, blue border -->
+    <div class="row d-flex align-items-center"
+        style="overflow:hidden; width:30vw; height:50vh;">
+
+        <div class="card">
+            <h4 class="card-title text-center">Login</h4>
+            <div class="card-body">
+                <form [formGroup]="f" novalidate>
+                    <div class="form-group m-2"
+                        [class.has-danger]="((f.get('username')?.hasError('required') || f.get('username')?.hasError('email')) && f.get('username')?.hasError('email') )&& f.get('username')?.touched">
+                        <input formControlName="username" type="text" class="form-control" id="username"
+                            [class.form-control-danger]="f.get('username')?.hasError('required') && f.get('username')?.touched"
+                            placeholder="Username">
+                        <div *ngIf="f.get('username')?.hasError('required') && f.get('username')?.touched"
+                            class="form-control-feedback">Username is required.</div>
+                    </div>
+                    <div class="form-group  m-2"
+                        [class.has-danger]="(f.get('password')?.hasError('required') || f.get('password')?.hasError('minlength')) && f.get('password')?.touched">
+                        <input formControlName="password" type="password" class="form-control"
+                            id="exampleInputPassword1"
+                            [class.form-control-danger]="f.get('password')?.hasError('required') && f.get('password')?.touched"
+                            placeholder="Password">
+
+                        <div *ngIf="f.get('password')?.hasError('required') && f.get('password')?.touched"
+                            class="form-control-feedback">Password is required.</div>
+                    </div>
+                    <button type="submit" (click)="onSubmit()" class="btn btn-sm btn-primary">Submit</button>
+                    <button type="submit" (click)="onReset()" class="btn btn-sm">Clear </button>
+                </form>
+
+            </div>
+        </div>
+
+    </div> <!-- Inner row -->
+</div> <!-- Outer container -->
